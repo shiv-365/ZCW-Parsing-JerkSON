@@ -43,5 +43,5 @@ You will need to handle your exceptions!
 I also expect you to report on how many exceptions you saw while parsing the data.
 
 
-GOOD LUCK ZIPCODERS!!!! My the Odds be ever in your favor!!!!
+GOOD LUCK ZIPCODERS!!!! May the Odds be ever in your favor!!!!
 
