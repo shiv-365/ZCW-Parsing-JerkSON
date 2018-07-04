@@ -15,11 +15,21 @@ public class Item {
      * @param type
      * @param expiration
      */
-    public Item(String name, Double price, String type, String expiration){
-        this.name = name;
-        this.price = price;
-        this.type = type;
-        this.expiration = expiration;
+    public Item(final String name, final Double price, final String type, final String expiration)throws ItemParseException{
+        try {
+
+                this.name = name;
+                this.price = price;
+                this.type = type;
+                this.expiration = expiration;
+
+                throw new ItemParseException("");
+
+        }
+        catch (ItemParseException e){
+
+            System.out.println(e.getMessage() + "error!TESTTESTTEST");
+        }
     }
 
     public String getName() {
@@ -43,6 +53,6 @@ public class Item {
 
     @Override
     public String toString(){
-        return "name:" + name + " price:" + price + " type:" + type + " expiration:" + expiration;
+        return "name:" + getName() + " price:" + getPrice() + " type:" + getType() + " expiration:" + getExpiration();
     }
 }
