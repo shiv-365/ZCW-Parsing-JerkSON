@@ -15,21 +15,17 @@ public class Item {
      * @param type
      * @param expiration
      */
-    public Item(final String name, final Double price, final String type, final String expiration)throws ItemParseException{
-        try {
+    public Item(final String name, final Double price, final String type, final String expiration) {
+
 
                 this.name = name;
                 this.price = price;
                 this.type = type;
                 this.expiration = expiration;
 
-                throw new ItemParseException("");
 
-        }
-        catch (ItemParseException e){
 
-            System.out.println(e.getMessage() + "error!TESTTESTTEST");
-        }
+
     }
 
     public String getName() {

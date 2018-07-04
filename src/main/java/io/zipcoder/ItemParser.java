@@ -16,28 +16,35 @@ public class ItemParser {
     }
 
     public Item parseStringIntoItem(String rawItem) throws ItemParseException{
-        Item item;
+        Item item = null;
         rawItem = splitStringWithRegexPattern("##",rawItem).get(0);
         String toRemove = "^[a-zA-Z0-9]+:";
         String[] arrayOfRaw = rawItem.split("[;|^@%*!]");
 
-        try{
-            String name = arrayOfRaw[0];
-            Double price = Double.parseDouble(arrayOfRaw[1]);
-            String type = arrayOfRaw[2];
-            String expiration = arrayOfRaw[3];
+        try {
+
+            String name = lowerCase(arrayOfRaw[0].replaceAll(toRemove, "").replaceAll("0", "o"));
+            Double price = Double.parseDouble(arrayOfRaw[1].replaceAll(toRemove, ""));
+            String type = lowerCase(arrayOfRaw[2].replaceAll(toRemove, ""));
+            String expiration = lowerCase(arrayOfRaw[3].replaceAll(toRemove,""));
+            if (name.isEmpty()) {
+                throw new ItemParseException("");
+            } else if (price == null) {
+                throw new ItemParseException("");
+            } else if (type.isEmpty()) {
+                throw new ItemParseException("");
+            } else if (expiration.isEmpty()) {
+                throw new ItemParseException("");
+            }
+            item = new Item(name,price,type,expiration);
+        }
+
+        catch (ItemParseException e){
+            e.getMessage();
             throw new ItemParseException("");
         }
-        catch (ItemParseException e){
-             e.getMessage();
-        }
 
-
-        Pattern p = Pattern.compile(toRemove);
-        Matcher m = p.matcher(rawItem);
-
-
-        return null;
+        return item;
     }
 
     public ArrayList<String> findKeyValuePairsInRawItemData(String rawItem){
