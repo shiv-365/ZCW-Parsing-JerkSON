@@ -1,5 +1,7 @@
 package io.zipcoder;
 
+import java.util.Objects;
+
 public class Item {
     private String name;
     private Double price;
@@ -15,15 +17,13 @@ public class Item {
      * @param type
      * @param expiration
      */
-    public Item(final String name, final Double price, final String type, final String expiration) {
+    public Item(String name, Double price,  String type,  String expiration) {
 
 
                 this.name = name;
                 this.price = price;
                 this.type = type;
                 this.expiration = expiration;
-
-
 
 
     }
@@ -51,4 +51,20 @@ public class Item {
     public String toString(){
         return "name:" + getName() + " price:" + getPrice() + " type:" + getType() + " expiration:" + getExpiration();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Item item = (Item) o;
+        return Objects.equals(name, item.name) &&
+                Objects.equals(price, item.price);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, price);
+    }
+
 }

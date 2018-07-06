@@ -39,10 +39,11 @@ public class ItemParser {
             item = new Item(name,price,type,expiration);
         }
 
-        catch (ItemParseException e){
-            e.getMessage();
+        catch (Exception ex){
+            ex.getMessage();
             throw new ItemParseException("");
         }
+
 
         return item;
     }
@@ -57,9 +58,6 @@ public class ItemParser {
         return new ArrayList<String>(Arrays.asList(inputString.split(stringPattern)));
     }
 
-    private String cookies(String str){
-        return str.equals("co0kies") ? "cookies" : str;
-    }
 
     private String lowerCase(String str){
         String lower = "";
