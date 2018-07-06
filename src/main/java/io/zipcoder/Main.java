@@ -18,7 +18,6 @@ public class Main {
         ItemParser parser = new ItemParser();
         FormatString f = new FormatString();
         String output = (new Main()).readRawDataToString();
-        //String fixed = parser.spellCheck(output);
         ArrayList<String> list = parser.parseRawDataIntoStringArray(output);
         ArrayList<Item> items = new ArrayList<>();
 
